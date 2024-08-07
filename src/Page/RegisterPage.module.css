@@ -1,0 +1,64 @@
+/* RegisterPage.module.css */
+.container {
+    margin-top: 50px;
+   
+    
+  }
+  
+  .row {
+   
+    justify-content: center;
+    background-color:#ced4da;
+    border:none;
+    border-radius: 10px;
+    padding:5px;
+     /* box-shadow:  0 0 4px black; */
+  } 
+  
+  .col-md-6 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #34014e;
+  }
+  
+  .form-label {
+    /* font-weight: 600; */
+    /* color: #555555; */
+    color: #B4886B;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .form-control {
+   padding:5px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    
+  }
+  
+  .btn-primary {
+    width: 200px;
+    height:30px;
+    padding:5px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .mt-3 {
+    margin-top: 20px;
+  }
+  
