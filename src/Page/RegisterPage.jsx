@@ -23,6 +23,14 @@ const RegisterPage = () => {
                   <label htmlFor="password" className={styles["form-label"]}>Password</label>
                   <input type="password" className={styles["form-control"]} id="password" placeholder="Enter password" />
                 </div><br></br>
+                <div className="mb-3">
+                  <label htmlFor="role" className={styles["form-label"]}>Role</label>
+                  <select className={styles["form-control"]} id="role">
+                    <option value="">Select role</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </div><br></br>
                 <button type="submit" className={styles["btn-primary"]}>Register</button>
               </form>
               <div className="text-center mt-3">
@@ -33,7 +41,7 @@ const RegisterPage = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default RegisterPage;

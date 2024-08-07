@@ -5,7 +5,7 @@ import Sidebar from '../components/sidebar';
 import ProductTable from '../components/ProductTable';
 import styles from './HomePage.module.css';
 import { useState } from 'react';
-import { getAllProducts } from '../components/apis';
+import  { getAllProducts } from '../apis/Product_api.js';
 
  
 const Home = () => {
