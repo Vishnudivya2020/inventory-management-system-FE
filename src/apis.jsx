@@ -1,4 +1,4 @@
-const backendUrl = 'http://localhost:7000/Products';
+const backendUrl = `${import.meta.env.VITE_BACKEND_URL}/Products`; 
 
 const getAllPro = async () => {
     const response = await fetch (backendUrl);
