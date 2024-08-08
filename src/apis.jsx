@@ -1,4 +1,4 @@
-const backendUrl = "http://localhost:7000/Produts";
+const backendUrl = 'http://localhost:7000/Products';
 
 const getAllPro = async () => {
     const response = await fetch (backendUrl);

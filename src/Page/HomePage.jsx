@@ -1,7 +1,7 @@
 
 
   
-
+import { useEffect } from 'react';
 import Sidebar from '../components/sidebar';
 import ProductTable from '../components/ProductTable';
 import styles from './HomePage.module.css';
