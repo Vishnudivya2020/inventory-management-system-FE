@@ -1,28 +1,28 @@
 
+
   
-import React, { useEffect } from 'react';
+
 import Sidebar from '../components/sidebar';
 import ProductTable from '../components/ProductTable';
 import styles from './HomePage.module.css';
-import { useState } from 'react';
-import { getAllProducts } from '../apis/Product_api';
+import {useState} from 'react';
+import { getAllPro } from '../apis';
+
  
 const Home = () => {
     const [Products, setProducts] =useState([]);
 
-    const loadData = async() =>{
-      try{
-      const data =await getAllProducts();
-      console.log('Fetched Products:',data)
+    const loadData =async () =>{
+      const data =await getAllPro();
+
       setProducts(data);
-      }catch(error){
-        console.error('Error fetching Products:',error);
-      }
-    };
+    }
 
     useEffect(() =>{
-      loadData({});
+      loadData();
     },[]);
+
+  
 
     return (
    <div className={styles.HomeContainer}>
@@ -60,4 +60,3 @@ const Home = () => {
   
   export default Home;
   
-
