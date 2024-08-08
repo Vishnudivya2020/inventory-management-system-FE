@@ -6,8 +6,7 @@ import Sidebar from './sidebar';
 import ProductTable from './ProductTable';
 import styles from './HomePage.module.css';
 import {useState} from 'react';
-import { getAllPro } from '../../apis';
-
+import { getAllPro } from '../../APIs/Product_api';
  
 const Home = () => {
     const [Products, setProducts] =useState([]);
