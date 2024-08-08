@@ -2,11 +2,11 @@
 
   
 import { useEffect } from 'react';
-import Sidebar from '../components/sidebar';
-import ProductTable from '../components/ProductTable';
+import Sidebar from './sidebar';
+import ProductTable from './ProductTable';
 import styles from './HomePage.module.css';
 import {useState} from 'react';
-import { getAllPro } from '../apis';
+import { getAllPro } from '../../apis';
 
  
 const Home = () => {
