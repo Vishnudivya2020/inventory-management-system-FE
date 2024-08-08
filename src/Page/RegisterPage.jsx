@@ -1,48 +1,98 @@
-import React from 'react';
+
+
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './RegisterPage.module.css'
+ import styles from './RegisterPage.module.css'
+import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const RegisterPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    role: 'user'
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission (e.g., send data to server)
+    console.log('Form Data:', formData);
+  };
+
   return (
-    <div className={styles['container ']}>
-      <div className={styles["row"]} >
-        <div className={styles["col-md-6"]}>
-          <div className={styles["card"]}>
-            <div className="card-body">
-              <h3 className="card-title text-center">Register</h3>
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="username" className={styles["form-label"]}>Username</label>
-                  <input type="text" className={styles["form-control"]} id="username" placeholder="Enter username" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className={styles["form-label"]}>Email address</label>
-                  <input type="email" className={styles["form-control"]} id="email" placeholder="Enter email" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className={styles["form-label"]}>Password</label>
-                  <input type="password" className={styles["form-control"]} id="password" placeholder="Enter password" />
-                </div><br></br>
-                <div className="mb-3">
-                  <label htmlFor="role" className={styles["form-label"]}>Role</label>
-                  <select className={styles["form-control"]} id="role">
-                    <option value="">Select role</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                  </select>
-                </div><br></br>
-                <button type="submit" className={styles["btn-primary"]}>Register</button>
-              </form>
-              <div className="text-center mt-3">
-                <p>Already have an account? <Link to="/login">Login here</Link></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+    <Row className={styles["row"]}>
+      <Col md={6}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formName">
+            <Form.Label  className={styles['col-md-6 ']}>UserName</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formEmail" className={styles['from']}>
+            <Form.Label>Email </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formPassword" className="mt-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formRole" className="mt-3">
+            <Form.Label>Role</Form.Label>
+            <Form.Control
+              as="select"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              required
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Button variant="primary" type="submit" className="mt-3">
+            Register
+          </Button>
+        </Form>
+        <p>Already have an account? <Link to="/login">Login here</Link></p>
+      </Col>
+    </Row>
+    
+  );
 };
+
+// export default Register;
 
 export default RegisterPage;
 
