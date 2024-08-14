@@ -9,7 +9,7 @@ const CustomerTable = ({Customer = []}) => {
       <table className={styles.CustomerTable}>
         <thead>
           <tr>
-            <th>CustomerName</th>
+            <th> CustomerName</th>
             <th>Email</th>
             <th>Type</th>
             <th>CurrendOrders</th>
@@ -20,7 +20,7 @@ const CustomerTable = ({Customer = []}) => {
         <tbody>
           {Customer.map((Customer) => (
             <tr key={Customer.id}>
-              <td>{Customer.CustomerName}</td>
+              <td>{Customer.customerName}</td>
               <td>{Customer.Email}</td>
               <td>{Customer.Type}</td>
               <td>{Customer.CurrentOrders}</td>

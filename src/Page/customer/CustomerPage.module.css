@@ -1,0 +1,78 @@
+body{
+    margin:0;
+}
+.HomeContainer{
+    width:2500px;
+     background-color: azure;
+     margin-right:200px;
+ }
+ .home-icon {
+     width: 30px; /* Icon width */
+     height: 30px; /* Icon height */
+     cursor: pointer; /* Changes cursor to pointer on hover */
+   }
+ 
+ .title{
+     color:darkblue;
+     font-size: 20px;
+ }
+ .containers{
+     display:flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center; 
+    gap:10px;
+     background-color: #64aeef; 
+    
+ }
+ .subContainer-1{
+     
+     border: 1px solid #ccc;
+     padding: 20px;
+     margin: 10px;
+     width: 150px; 
+     text-align: center; 
+     border-radius: 10px;
+    
+     background-color:rgb(113, 113, 220);
+     
+ }
+ .subContainer-2{
+    
+     box-shadow: 8px solid black; 
+     background-color: lightblue;
+     border: 1px solid #ccc;
+     padding: 20px;
+     margin: 10px;
+     width: 150px; 
+     text-align: center; 
+     border-radius: 10px;
+    background-color: rgb(80, 235, 80); 
+   
+ }
+ .subContainer-3{
+    
+     background-color: rgb(101, 172, 196);
+     border: 1px solid #ccc;
+     padding: 20px;
+     margin: 10px;
+     width: 150px;
+     text-align: center; 
+     border-radius: 10px;
+     background-color: rgb(244, 91, 116);
+     
+ }
+ .subContainer-4{
+     background-color: lightblue;
+     border: 1px solid #ccc;
+     padding: 20px;
+     margin: 10px;
+     width: 150px; /* Fixed width */
+     text-align: center; /* Centers text inside the box */
+     border-radius: 10px;
+     background-color: orange;
+ 
+     
+ }
+ 
+ 

@@ -1,66 +1,84 @@
-/* RegisterPage.module.css */
-/* .container {
-    margin-top: 50px;
-   
-    
-  } */
-  body{
-    margin:0;
-  }
-  .row {
-   
-    justify-content: center;
-    background-color:#ced4da;
-    border:none;
-    border-radius: 10px;
-    padding:5px;
-   box-shadow:  0 0 4px black; 
-  } 
+/* Background container for the entire page */
+.login_container {
+  height: 100vh;
+  width:100vw; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://images.freecreatives.com/wp-content/uploads/2016/01/Amazing-Blue-Pattern-Background-Free.jpg');
   
-  .col-md-6 {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #34014e;
-  } */ 
-  /* .form-label { */
- 
-     /* font-weight: 600; */
-    /* color: #555555; */
-    /* color: #B4886B;
-    font-weight: bold;
-    display: block;
-  }
-   */
-  /* .form-control {
-   padding:5px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    box-shadow: none;
-    
-  } */
-  
-  /* .btn-primary {
-    width: 200px;
-    height:30px;
-    padding:5px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-  }
-   */
-  /* .btn-primary:hover {
-    background-color: #0056b3;
-  }  */
-  
-   .mt-3 {
-    margin-top: 20px;
-  }
-   
+  background-size: cover;
+  padding: 0;
+  margin:0;
+}
+
+/* Row styling within the form container */
+.row {
+  background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height:580px;
+  margin-right: 50px;
+  opacity: 0.8;
+}
+
+/* Form label styling */
+.label {
+  color: #242222; /* Dark text color */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input group styling */
+.group {
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  background-color: #007bff; /* Bootstrap primary color */
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Text link to login */
+p {
+  color: #333;
+  text-align: center;
+}
+
+/* Success and error messages */
+.text-success {
+  color: green;
+  font-weight: bold;
+}
+
+.text-danger {
+  color: red;
+  font-weight: bold;
+}

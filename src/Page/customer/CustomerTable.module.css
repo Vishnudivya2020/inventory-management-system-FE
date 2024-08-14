@@ -1,18 +1,21 @@
+body{
+    margin:0;
+}
 .tableContainer {
     padding: 20px;
   }
   
-  .productTable {
+  .CustomerTable {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .productTable th, .productTable td {
+  .CustomerTable th, .CustomerTable td {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  .productTable th {
+  .CustomerTable th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -20,16 +23,11 @@
     color: white;
   }
   
-  .productTable tr:nth-child(even) {
+  .CustomerTable tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
-  .productTable tr:hover {
+  .CutomerTable tr:hover {
     background-color: #ddd;
-  }
-  .icons{
-    padding:10px;
-    display: flex;
-    color:blue;
   }
   

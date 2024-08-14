@@ -33,6 +33,10 @@
 .title{
     color:darkblue;
     font-size: 20px;
+    margin:0;
+}
+p{
+    font-size: 20px; 
 }
 .containers{
     display:flex;
@@ -44,7 +48,9 @@
    
 }
 .subContainer-1{
-    
+    display: grid;
+    justify-content: space-around;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10px;

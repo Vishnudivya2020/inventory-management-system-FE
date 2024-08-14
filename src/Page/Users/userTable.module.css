@@ -1,35 +1,30 @@
 .tableContainer {
-    padding: 20px;
+    padding: 5px;
   }
   
-  .productTable {
+  .userTable {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .productTable th, .productTable td {
+  .userTable th, .userTable td {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  .productTable th {
+  .userTable th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #333;
     color: white;
   }
   
-  .productTable tr:nth-child(even) {
+  .userTable tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
-  .productTable tr:hover {
+  .userTable tr:hover {
     background-color: #ddd;
-  }
-  .icons{
-    padding:10px;
-    display: flex;
-    color:blue;
   }
   
