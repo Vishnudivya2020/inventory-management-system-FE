@@ -166,7 +166,7 @@ h3{
 .saveBtn:hover{
   background: green;
 }
-.cancelBtn{
+.CancelBtn{
  
     border:none;
     border-radius: 12px;
@@ -176,7 +176,7 @@ h3{
     padding:5px;
     width:150px;
   }
-  .cancelBtn:hover{
+  .CancelBtn:hover{
     background: red;
   }
   .EditBtns{

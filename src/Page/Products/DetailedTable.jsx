@@ -123,7 +123,7 @@ const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
             />
             <div className={styles.EditBtns}>
               <button onClick={handleSaveChanges} className={styles.saveBtn}>Save Changes</button>
-              <button onClick={closeModal} className={styles.cancelBtn}>Cancel</button>
+              <button onClick={closeModal} className={styles.CancelBtn}>Cancel</button>
             </div>
           </div>
         </div>
