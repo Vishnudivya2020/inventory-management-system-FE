@@ -1,8 +1,8 @@
 body{
     margin:0;
 }
-.HomeContainer{
-    width:2500px;
+.UserContainer{
+    width:1200px;
      background-color: azure;
      margin-right:200px;
  }
@@ -12,7 +12,7 @@ body{
      color:darkblue;
      font-size: 20px;
  }
- .containers{
+ .Ucontainers{
      display:flex;
      flex-direction: row;
      justify-content: space-around;

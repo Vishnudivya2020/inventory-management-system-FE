@@ -1,10 +1,12 @@
 /* LoginPage.module.css */
-.container {
+.loginContainer {
   margin:0;
   padding: 0;
   overflow: hidden; 
-  height: 100vh;
-  width: 100vw;
+  height: 590px;
+  width: 1188px;
+  margin-left:0;
+  margin-right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,20 +16,30 @@
     
 }
 
-.row {
+.loginForm {
   justify-content: center;
   padding: 5px;
   margin-right: 700px;
-  height:50px;
+  height:400px;
   width:400px;
-  margin-bottom: 500px;
+  margin-bottom: 50px;
+  background-color: #e1dcdc;
+  opacity: 0.8;
+  box-shadow:4px #474343;
+
 }
 
-.Col  {
+form {
   background-color: #e1dcdc;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.inputField{
+  padding:6px;
+  border:none;
+  width:350px;
+  border-radius: 8px;
 }
 
 h2 {
@@ -37,34 +49,26 @@ h2 {
   color: #474343;
 }
 
-.Labels {
-  font-weight: 600;
-  color:#0056b3;
+.loginlabel {
+  display: flex;
+  font-weight: bolder;
+ color:blue;
   gap: 5px;
-  padding: 10px;
+  padding: 8px;
+
 }
 
-.Control {
-  border-radius: 5px;
-  border: 1px solid #ced4da;
- padding: 5px;
- display: flex;
- flex-direction: column;
- 
-}
 
-.mt-3{
-  width: 100%;
+.loginButton{
+  width: 340px;
+  align-items: center;
   background-color: #007bff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding:5px;
 }
 
-.mt-3:hover {
+.loginButton:hover {
   background-color: #0056b3;
 }
 
-.mt-3 {
-  margin-top: 20px;
-}

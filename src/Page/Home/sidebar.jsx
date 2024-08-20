@@ -30,10 +30,10 @@ function Sidebar() {
         <div className={styles.closebtn} onClick={toggleSidebar}>🔐</div>
         <div> 🛒My Inventory</div>
         <div onClick={redirectToProducts}>📌Products</div>
-        <div  onClick={redirectToAdmin }>👨🏻‍💼Admin</div>
+        
         <div onClick={redirectToUsers}>🧕🏻Users</div>
         <div onClick={redirectToCustomers}>👩🏻‍👧🏻‍👦🏻Customers</div> {/* Add onClick to redirect */}
-        <div>📦Orders</div>
+       
         
       </div>
       <div className='main' id="main">

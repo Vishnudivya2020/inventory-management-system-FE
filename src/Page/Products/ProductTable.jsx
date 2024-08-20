@@ -1,93 +1,82 @@
-// import React from 'react';
-// import styles from './ProductTable.module.css';
-// // Import icons (example with FontAwesome)
-// import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-
-// const ProductTable = ({Products = [],onEdit,onDelete,onView}) => {
-   
-
-//   return (
-//     <div className={styles.tableContainer}>
-//       <table className={styles.productTable}>
-//         <thead>
-//           <tr>
-//             <th>ProductName</th>
-//             <th>Bought</th>
-//             <th>Sold</th>
-//             <th>AvailableInStock</th>
-//             <th>Id</th>
-//             <th>Action</th> 
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {Products.map((product) => (
-//             <tr key={product.id}>
-//               <td>{product.ProductName}</td>
-//               <td>{product.bought}</td>
-//               <td>{product.sold}</td>
-//               <td>{product.availableInStock}</td>
-//               <td>{product.id}</td>
-//               <td>
-//                 {/* Add icons for actions */}
-//                 <FaEye className={styles.icon} onClick={() => onView(product.id)} />&nbsp;
-//                 <FaEdit className={styles.icon} onClick={() => onEdit(product.id)} />&nbsp;
-//                 <FaTrash className={styles.icon} onClick={() => onDelete(product.id)} />&nbsp;
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default ProductTable;
+//ProductTable page:-
 
 import React from 'react';
+import {useState} from 'react';
+import {FaEye} from 'react-icons/fa';
 import styles from './ProductTable.module.css';
-import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 
-const ProductTable = ({ Products = [], onEdit, onDelete, onView }) => {
+
+const ProductTable = ({ Products = [], onView }) => {
+ const [selectedProduct, setSelectedProduct]=useState(null);
+ const[isViewModelOpen, setIsViewModelOpen]=useState(false);  
+
+ const handleViewClick =(productId) =>{
+  const product = Products.find((p) => p.id === productId);
+    setSelectedProduct(product ||null);
+   setIsViewModelOpen(true);
+ };
+
+ const closeModal = () =>{
+  setIsViewModelOpen(false);
+ };
+ 
   return (
     <div className={styles.tableContainer}>
       <table className={styles.productTable}>
         <thead>
           <tr>
-            <th>ProductName</th>
+            <th>Product Name</th>
             <th>Bought</th>
             <th>Sold</th>
-            <th>AvailableInStock</th>
-            <th>Id</th>
-            <th>Image</th> {/* Added column for images */}
+            <th>Available In Stock</th>
+            <th>ID</th>
             <th>Action</th>
+            
           </tr>
         </thead>
         <tbody>
-          {Products.map((product) => (
+          {Products?.map((product) => (
             <tr key={product.id}>
               <td>{product.ProductName}</td>
               <td>{product.bought}</td>
               <td>{product.sold}</td>
               <td>{product.availableInStock}</td>
               <td>{product.id}</td>
-              <td>
-                <img
-                  src={product.image || '/images/products/default.jpg'}
-                  alt={product.ProductName}
-                  className={styles.productImage}
-                />
-              </td>
-              <td>
-                <FaEye className={styles.icon} onClick={() => onView(product.id)} />&nbsp;
-                <FaEdit className={styles.icon} onClick={() => onEdit(product.id)} />&nbsp;
-                <FaTrash className={styles.icon} onClick={() => onDelete(product.id)} />&nbsp;
-              </td>
+              <td className={styles.iconBtn}>
+                <button onClick={() => handleViewClick(product.id)}>
+                  <FaEye className={styles.iconView} />
+                </button>
+             </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+
+      {/* View Product Modal */}
+      {isViewModelOpen && selectedProduct && (
+        <div className={styles.modalOverlay}>
+          <h3>View Product</h3>
+          <img
+            src={selectedProduct.imageUrl || '/images/products/default.jpg'}
+            className={styles.productImage}
+            alt={selectedProduct.ProductName}
+          />
+          <div className={styles.productInfo}>
+            <p><strong>Product Name:</strong> {selectedProduct.ProductName}</p>
+            <p><strong>Bought:</strong> {selectedProduct.bought}</p>
+            <p><strong>Sold:</strong> {selectedProduct.sold}</p>
+            <p><strong>Available In Stock:</strong> {selectedProduct.availableInStock}</p>
+            <p><strong>ID:</strong> {selectedProduct.id}</p>
+            <div className={styles.EditBtns}>
+              <button onClick={closeModal} className={styles.cancelBtn}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ProductTable;
+

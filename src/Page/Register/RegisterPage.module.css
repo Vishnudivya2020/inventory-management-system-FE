@@ -1,7 +1,7 @@
 /* Background container for the entire page */
-.login_container {
-  height: 100vh;
-  width:100vw; /* Full viewport height */
+.Regcontainer {
+  height: 100%;
+  width:1188px; /* Full viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,12 +19,14 @@
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   height:580px;
-  margin-right: 50px;
+  
+  margin-right: 500px;
   opacity: 0.8;
+  
 }
 
 /* Form label styling */
-.label {
+Form.Label {
   color: #242222; /* Dark text color */
   font-weight: bold;
   display: flex;
@@ -33,24 +35,25 @@
 }
 
 /* Input group styling */
-.group {
+.Form.Control {
   margin-bottom: 1rem;
+  
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+Form.Control[type="text"],
+Form.Control[type="email"],
+Form.Control[type="password"],
 select {
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #c5bcb8fb;
   padding: 0.75rem;
-  width: 100%;
+  width: 500px;
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
 
 /* Submit button styling */
-button[type="submit"] {
+.Regbutton[type="submit"] {
   background-color: #007bff; /* Bootstrap primary color */
   border: none;
   border-radius: 5px;
@@ -62,12 +65,12 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.Regbutton[type="submit"]:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
 
 /* Text link to login */
-p {
+.mt-3 {
   color: #333;
   text-align: center;
 }
@@ -81,4 +84,8 @@ p {
 .text-danger {
   color: red;
   font-weight: bold;
+}
+
+Form{
+  width:400px;
 }

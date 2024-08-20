@@ -1,59 +1,53 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Adminpage.module.css';
 import { getAllAdmin } from '../../APIs/Admin_api.js';
-import { useState } from 'react';
 import AdminTable from './AdminTable.jsx';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const AdminPage = () => {
-  const [Admin, setAdmin] =useState([]);
+  const [admins, setAdmins] = useState([]);
 
+  // Fetch user details from localStorage
   const userDetails = JSON.parse(localStorage.getItem('User_details'));
-  const isAuthorized = userDetails.role === 'admin';
- 
-  const loadData =async () =>{
-    const data =await getAllAdmin();
   
-    setAdmin(data);
-  }
+  // Check if user is authorized
+  const isAuthorized = userDetails && userDetails.role === "admin";
 
-  useEffect(() =>{
-    loadData();
-  },[]);
-
-  const renderCheck = () =>{
-    if(isAuthorized){
-      return (
-      <div className={styles.HomeContainer}>
-     <h1>Welcome To Admin Page</h1>
-     
-      <div  className={styles.containers}>
-      <div className={styles['subContainer-1']}>
-        <h2 className={styles.title}>Number of Admins</h2>
-      </div>
-     
-     
-      </div>
-      <AdminTable  Admin={Admin}/>
-    </div>
-      )
-      
-     
-    }else{
-      return <h1>Your Not Authorized </h1>
-    }
-  }
-
-  
-
-    return( 
-      <>
-   
-  
-    {renderCheck()}
-    <Link to="/home" >⬅️</Link>
-    </>
-    )
+  // Function to load admin data
+  const loadData = async () => {
+    const data = await getAllAdmin();
+    setAdmins(data);
   };
+
+  // Load admin data on component mount
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  // Render the component based on authorization
+  const renderCheck = () => {
+    if (isAuthorized) {
+      return <AdminTable admin={admins} />;
+    } else {
+      return <h1>You are not Authorized</h1>;
+    }
+  };
+
+  return (
+    <div className={styles.HomeContainer}>
+      <h1>Welcome To Admin Page</h1>
+      
+      <div className={styles.containers}>
+        <div className={styles['subContainer-1']}>
+          <h2 className={styles.title}>Number of Admins</h2>
+        </div>
+      </div>
+  
+      {renderCheck()}
+      <Link to="/home">⬅️</Link>
+    </div>
+  );
+};
+
 export default AdminPage;

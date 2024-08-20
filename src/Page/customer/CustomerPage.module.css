@@ -1,22 +1,22 @@
 body{
     margin:0;
 }
-.HomeContainer{
-    width:2500px;
+.CusContainer{
+    width:1180px;
      background-color: azure;
      margin-right:200px;
  }
  .home-icon {
-     width: 30px; /* Icon width */
-     height: 30px; /* Icon height */
-     cursor: pointer; /* Changes cursor to pointer on hover */
+     width: 30px; 
+     height: 30px; 
+     cursor: pointer; 
    }
  
  .title{
      color:darkblue;
      font-size: 20px;
  }
- .containers{
+ .Cuscontainers{
      display:flex;
      flex-direction: row;
      justify-content: space-around;
@@ -30,7 +30,7 @@ body{
      border: 1px solid #ccc;
      padding: 20px;
      margin: 10px;
-     width: 150px; 
+     width: 200px; 
      text-align: center; 
      border-radius: 10px;
     
@@ -44,7 +44,7 @@ body{
      border: 1px solid #ccc;
      padding: 20px;
      margin: 10px;
-     width: 150px; 
+     width: 200px; 
      text-align: center; 
      border-radius: 10px;
     background-color: rgb(80, 235, 80); 
@@ -56,7 +56,7 @@ body{
      border: 1px solid #ccc;
      padding: 20px;
      margin: 10px;
-     width: 150px;
+     width: 200px;
      text-align: center; 
      border-radius: 10px;
      background-color: rgb(244, 91, 116);
@@ -67,12 +67,11 @@ body{
      border: 1px solid #ccc;
      padding: 20px;
      margin: 10px;
-     width: 150px; /* Fixed width */
+     width: 200px; /* Fixed width */
      text-align: center; /* Centers text inside the box */
      border-radius: 10px;
      background-color: orange;
  
      
  }
- 
  

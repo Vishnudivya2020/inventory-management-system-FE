@@ -1,0 +1,190 @@
+.DtableContainer {
+    padding: 5px;
+    width: 1200px;
+  }
+  
+  .productDTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .productDTable th, .productDTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .productDTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+  }
+  
+  .productDTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .productDTable tr:hover {
+    background-color: #ddd;
+  }
+  .Ebtn{
+    padding:10px;
+    border:none;
+    color:blue;
+    border-radius: 10px;
+    background-color: purple;
+  }
+  .Dbtn{
+    padding:10px;
+    border:none;
+    border-radius: 10px;
+    background-color:rgb(228, 127, 44);
+  }
+  .icon1{
+    display:flex;
+    flex-direction: row;
+    color:rgb(71, 67, 67);
+    
+  }
+  .icon2{
+    display:flex;
+    flex-direction: row;
+    color:red;
+    
+  }
+.ProiconBtn{
+    display: flex;         
+    justify-content: space-between; 
+    gap: 10px;              
+    align-items: center;
+     background-color: blue;
+    width:150px;
+}
+.iconBtn > * {
+    font-size: 1.2rem;           
+    color: #333;                 
+    cursor: pointer;             
+    margin: 0 5px;               
+    transition: color 0.3s ease; 
+}
+.iconBtn> *:hover {
+    color: #007bff;              
+}
+.productDetails {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.DproductImage{
+    max-width: 500px;
+    max-height: 200px;
+    margin-right: 80px;
+    border-radius: 10px;
+    background-color:white;
+    margin-right: 40px;
+}
+
+.DproductInfo {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    margin-right: 280px;
+    /* box-shadow:0 4px 8px rgba(0, 0, 0, 0.1) ; */
+}
+
+.DproductInfo h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    
+}
+h3{
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom:450px;
+  width: 100%;
+}
+.DproductInfo p {
+    margin: 5px 0;
+    font-size: 1rem;
+    
+}
+
+.DmodalOverlay {
+  position: fixed;
+  top:100px;
+  right: 160px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: white;
+ 
+    }
+
+
+
+
+.DproductInfo label {
+
+  margin-top: 10px;
+  font-weight: bold;
+  color:rgb(15, 2, 193);
+}
+
+.DproductInfo input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color:rgb(6, 181, 53);
+  
+}
+.saveBtn{
+  border:none;
+  border-radius: 12px;
+  background-color:rgb(182, 5, 144);
+  color:#f2f2f2;
+  padding:5px;
+  width:150px;
+}
+.saveBtn:hover{
+  background: green;
+}
+.cancelBtn{
+ 
+    border:none;
+    border-radius: 12px;
+    padding:5px;
+    background-color:rgb(182, 5, 144);
+    color:#f2f2f2;
+    padding:5px;
+    width:150px;
+  }
+  .cancelBtn:hover{
+    background: red;
+  }
+  .EditBtns{
+    display:flex;
+    justify-content: space-around;
+    gap:2em;
+    
+  }
+
+
+

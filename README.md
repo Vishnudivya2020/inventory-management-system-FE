@@ -1,8 +1,18 @@
-# React + Vite
+![MY Project](https://nationalwhateverday.com/wp-content/uploads/2020/04/Untitled-3.jpg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TOPIC:
+     INVENTORY MANAGEMENT SYSTEM.
 
-Currently, two official plugins are available:
+PROJECT STRUCTURE:-
+    * FRONTEND:-
+            React with  Bootstrap  
+            React-router-dom 
+            react-redux for UI Components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    * BACKEND:-
+            Node.js  with Express.js.
+
+    * DATABASE:-
+            MongoDB and Mongoose for managing datas. 
+
+      
