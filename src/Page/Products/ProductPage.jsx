@@ -20,6 +20,9 @@ const ProductPage = () => {
   ]);
   const [totalProducts, setTotalProducts] =useState(0);
 
+  const userDetails =JSON.parse(localStorage.getItem('user_details'));
+ const isAuthorized =userDetails.role === 'admin';
+  
   const loadData =async () =>{
     const data =await getAllPro();
 
@@ -47,15 +50,24 @@ const ProductPage = () => {
     );
   };
 
+  const rendercheck = ()=>{
+    if(isAuthorized){
+      return<DetailedTable 
+      Products={Products}
+     onEdit={handleEditProduct}
+     onDelete={handleDeleteProduct}
+      />
+    }else{
+      return  <h1>Your Not Authorized🤷‍♀️</h1>
+    }
+  }
+
     return (
    <div className={styles.HomeContainer}>
+    {rendercheck()}
   
   <Link to='/home'>Go To HomePage</Link>
-      <DetailedTable 
-       Products={Products}
-      onEdit={handleEditProduct}
-      onDelete={handleDeleteProduct}
-       />
+      
     </div>
 
     )
