@@ -1,66 +1,33 @@
 /* AdminTable.module.css */
-
 .tableContainer {
-  margin: 20px auto;
-  max-width: 80%; 
-  overflow-x: auto;
-  /* Custom styles for the table container */
-}
-
-.AdminTable {
-  width: 100%; 
-  table-layout: fixed; 
-  word-wrap: break-word;
-  /* Custom table styles */
-}
-
-.tableHead {
-  /* Custom styles for table headers */
-  font-weight: bold;
-  font-weight: bold;
-  padding: 10px;
-  text-align: center;
-}
-
-.tableData {
-  /* Custom styles for table data cells */
- 
-  padding: 8px;
-  text-align: center;
-}
-
-.row {
-  /* Custom styles for table rows */
-}
-th,td{
-  width:25%;
-}
-th:nth-child(1), td:nth-child(1) {
-  width: 20%;
-}
-
-th:nth-child(2), td:nth-child(2) {
-  width: 30%;
-}
-
-th:nth-child(3), td:nth-child(3) {
-  width: 30%;
-}
-
-th:nth-child(4), td:nth-child(4) {
-  width: 20%;
-}
-
-/* Reduce spacing if needed */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9 !important;
-}
-
-
-/* Override Bootstrap styles if necessary */
-.table-bordered {
-  border-color: #ddd !important;
-}
+    padding: 5px;
+  }
+  
+  .AdminTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .AdminTable th, .AdminTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .AdminTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+  }
+  
+  .AdminTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .AdminTable tr:hover {
+    background-color: #ddd;
+  }
 
 
   

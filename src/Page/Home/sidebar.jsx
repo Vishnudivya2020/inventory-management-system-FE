@@ -20,9 +20,9 @@ function Sidebar() {
   const redirectToUsers = () => {
     navigate('/users'); // Redirect to the UserHomePage route
   };
-  const redirectToAdmin = () => {
-    navigate('/Admin'); // Redirect to the AdminHomePage route
-  };
+  // const redirectToAdmin = () => {
+  //   navigate('/Admin'); // Redirect to the AdminHomePage route
+  // };
 
   return (
     <div className='side-container'>
@@ -30,7 +30,7 @@ function Sidebar() {
         <div className={styles.closebtn} onClick={toggleSidebar}>🔐</div>
         <div> 🛒My Inventory</div>
         <div onClick={redirectToProducts}>📌Products</div>
-        
+        {/* <div onClick={redirectToAdmin}>👨🏻‍💼Admin</div> */}
         <div onClick={redirectToUsers}>🧕🏻Users</div>
         <div onClick={redirectToCustomers}>👩🏻‍👧🏻‍👦🏻Customers</div> {/* Add onClick to redirect */}
        

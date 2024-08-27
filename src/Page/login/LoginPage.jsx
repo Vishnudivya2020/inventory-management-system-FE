@@ -29,7 +29,7 @@ function LoginPage() {
 
         if(data.code ===1){
             localStorage.setItem("isAuthenticated",true);
-            localStorage.setItem("user_details",JSON.stringify(data.User));
+            localStorage.setItem("token",data.token);
             navigate("/home");//redirect to home page
         }else{
             alert ("Please check your Credentials");

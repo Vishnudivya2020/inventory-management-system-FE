@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './ProductPage.module.css';
 import { getAllPro } from '../../APIs/Product_api';
 import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {jwtDecode} from "jwt-decode";
 import DetailedTable from './DetailedTable';
 import { useEffect } from 'react';
 
@@ -20,8 +21,15 @@ const ProductPage = () => {
   ]);
   const [totalProducts, setTotalProducts] =useState(0);
 
-  const userDetails =JSON.parse(localStorage.getItem('user_details'));
- const isAuthorized =userDetails.role === 'admin';
+  const token= localStorage.getItem('token');
+
+  const userDetails = jwtDecode(token);
+
+  console.log(userDetails);
+
+  const isAuthorized = userDetails.role ==="admin";
+//   const userDetails =JSON.parse(localStorage.getItem('user_details'));
+//  const isAuthorized =userDetails.role === 'admin';
   
   const loadData =async () =>{
     const data =await getAllPro();
@@ -33,7 +41,9 @@ const ProductPage = () => {
   }
 
   useEffect(() =>{
+    if(isAuthorized){
     loadData();
+    }
   },[]);
 
   const handleEditProduct = (updatedProduct) => {

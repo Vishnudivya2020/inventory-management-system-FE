@@ -12,7 +12,7 @@ const AdminPage = () => {
   const userDetails = JSON.parse(localStorage.getItem('User_details'));
   
   // Check if user is authorized
-  const isAuthorized = userDetails && userDetails.role === "admin";
+  const isAuthorized = userDetails && userDetails.role === "Admin";
 
   // Function to load admin data
   const loadData = async () => {
@@ -28,14 +28,7 @@ const AdminPage = () => {
   // Render the component based on authorization
   const renderCheck = () => {
     if (isAuthorized) {
-      return <AdminTable admin={admins} />;
-    } else {
-      return <h1>You are not Authorized</h1>;
-    }
-  };
-
-  return (
-    <div className={styles.HomeContainer}>
+      <div className={styles.HomeContainer}>
       <h1>Welcome To Admin Page</h1>
       
       <div className={styles.containers}>
@@ -43,11 +36,27 @@ const AdminPage = () => {
           <h2 className={styles.title}>Number of Admins</h2>
         </div>
       </div>
+      </div>
+      return <AdminTable admins={admins} />;
+    } else {
+      return <h1>You are not Authorized</h1>;
+    }
+  };
+
+  return (
+     <div className={styles.HomeContainer}>
+    {/* //   <h1>Welcome To Admin Page</h1>
+      
+    //   <div className={styles.containers}>
+    //     <div className={styles['subContainer-1']}>
+    //       <h2 className={styles.title}>Number of Admins</h2>
+    //     </div>
+    //   </div> */}
   
       {renderCheck()}
       <Link to="/home">⬅️</Link>
     </div>
-  );
+  )
 };
 
 export default AdminPage;
