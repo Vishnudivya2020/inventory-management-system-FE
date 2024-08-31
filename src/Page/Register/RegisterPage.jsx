@@ -10,7 +10,7 @@ const RegisterPage = () => {
     name: '',
     email: '',
     password: '',
-    role: '',
+    role: 'admin',
   });
 
   const [error, setError] = useState('');

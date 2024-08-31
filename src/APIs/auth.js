@@ -31,7 +31,21 @@ const  userSignIn = async (userData) =>{
   });
    return await response.json();
 
+};
+
+const verifyAccount = async (token)=> {
+ 
+  const response = await  fetch(`${BE_Url}/verify-user`,{
+    method:"POST",
+    body:JSON.stringify({
+      token,
+    }),
+    headers:{
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  return await response.json();
 }
 
-export { userSignup, userSignIn};
+export { userSignup, userSignIn,verifyAccount  };
 

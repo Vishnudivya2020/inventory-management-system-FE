@@ -8,6 +8,7 @@ import CustomerHomePage from "./Page/customer/CustomerHomePage.jsx";
 import ProductPage from "./Page/Products/ProductPage.jsx";
 import UserPage from "./Page/Users/UserPage.jsx";
 import AdminPage from "./Page/Admin/Adminpage.jsx";
+import VerifyAccount from "./Page/verify-accound/verifyAccount.jsx";
 
 function AppRouter() {
   return (
@@ -20,6 +21,7 @@ function AppRouter() {
         <Route path="/Products" element={<ProductPage />} />
         <Route path="/users" element={<UserPage />} />
         <Route path="/Admin" element={<AdminPage />} />
+       <Route path="/verify-account" element={<VerifyAccount />} />
         <Route path="/home" element={<ProtectedRoute  component={<Home/>}/> }  />
       </Routes>
     </BrowserRouter>
