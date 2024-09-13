@@ -74,4 +74,99 @@ body{
  
      
  }
+ .AddButton,.AddCus{
+    background-color: #007bff; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+ }
+
+ .AddCus:hover {
+    background-color: #0056b3; 
+  }
  
+  /* AddNewCustomerForm.module.css */
+.addCustomerContainer {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .formGroup input[type="text"] {
+    resize: vertical;
+  }
+  
+  .addButton {
+    background-color: #28a745; /* Success color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover {
+    background-color: #218838; /* Darker shade on hover */
+  }
+
+  /* CustomerDetails.module.css */
+.customerContainer {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .customerInfo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .customerImage {
+    max-width: 150px; /* Adjust as needed */
+    max-height: 150px;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  
+  .customerImage img {
+    width: 100%;
+    height: auto;
+  }
+  
+  

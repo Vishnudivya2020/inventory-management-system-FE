@@ -1,5 +1,5 @@
 
-body{
+/* body{
     margin:0;
 }
 .HomeContainer{
@@ -64,4 +64,78 @@ body{
   }
  
  
- 
+  */
+  /* ProductPage.css */
+/* 
+.container {
+  margin-top: 20px;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-bordered {
+  border: 1px solid #ddd;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+img {
+  border-radius: 4px;
+}
+
+.action-icons {
+  display: flex;
+  align-items: center;
+}
+
+.action-icons svg {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.action-icons svg:hover {
+  color: #007bff;
+} */

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import styles from './DetailedTable.module.css';
+// import styles from './DetailedTable.module.css';
 
 const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -43,13 +43,14 @@ const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
   return (
     <div className={styles.DtableContainer}>
       <table className={styles.productDTable}>
-        <thead>
+        <thead  style={{backgroundColor:'black',color:'whitesmoke'}} >
           <tr>
             <th>Product Name</th>
             <th>Bought</th>
             <th>Sold</th>
             <th>Available In Stock</th>
             <th>ID</th>
+            <th>OrderId</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -61,6 +62,7 @@ const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
               <td>{product.sold}</td>
               <td>{product.availableInStock}</td>
               <td>{product.id}</td>
+              <td>{product.orderId}</td>
               <td className={styles.iconBtn}>
                 <button>
                   <FaEdit

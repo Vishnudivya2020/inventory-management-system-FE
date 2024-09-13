@@ -1,4 +1,4 @@
-body{
+/* body{
     margin:0;
 }
 .CusTableContainer {
@@ -173,4 +173,87 @@ margin-left: 250px;
 }
 .Delicon{
   color:red;
+} */
+
+
+/* CustomerTable.module.css */
+.CusTableContainer {
+  /* Your table container styles */
+}
+
+.CustomerTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.CustomerTable th,
+.CustomerTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.CusiconBtn button {
+  margin: 0 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.Viewicon {
+  color: green;
+}
+
+.Delicon {
+  color: red;
+}
+
+.CusmodalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.CusmodalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.CustomerImage {
+  max-width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.CustomerInfo {
+  margin-top: 10px;
+}
+
+.CusEditBtns {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.CuscancelBtn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.CuscancelBtn:hover {
+  background-color: #0056b3;
 }

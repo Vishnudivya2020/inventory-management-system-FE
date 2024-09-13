@@ -98,3 +98,28 @@ p{
     
 }
 
+.profilePicContainer {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1000px;
+  }
+  
+  .profilePic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .userName {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h1{
+    display:flex;
+    margin-left: 250px;
+  }

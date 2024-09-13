@@ -30,18 +30,21 @@ const ProductTable = ({ Products = [], onView }) => {
             <th>Sold</th>
             <th>Available In Stock</th>
             <th>ID</th>
+            <th>OrderId</th>
             <th>Action</th>
+            
             
           </tr>
         </thead>
         <tbody>
-          {Products?.map((product) => (
+          {Products.map((product) => (
             <tr key={product.id}>
               <td>{product.ProductName}</td>
               <td>{product.bought}</td>
               <td>{product.sold}</td>
               <td>{product.availableInStock}</td>
               <td>{product.id}</td>
+              <td>{product.orderId}</td>
               <td className={styles.iconBtn}>
                 <button onClick={() => handleViewClick(product.id)}>
                   <FaEye className={styles.iconView} />
@@ -67,6 +70,7 @@ const ProductTable = ({ Products = [], onView }) => {
             <p><strong>Bought:</strong> {selectedProduct.bought}</p>
             <p><strong>Sold:</strong> {selectedProduct.sold}</p>
             <p><strong>Available In Stock:</strong> {selectedProduct.availableInStock}</p>
+            <p><strong>OrderID:</strong> {selectedProduct.orderId}</p>
             <p><strong>ID:</strong> {selectedProduct.id}</p>
             <div className={styles.EditBtns}>
               <button onClick={closeModal} className={styles.cancelBtn}>Close</button>

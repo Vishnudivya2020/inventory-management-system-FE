@@ -69,3 +69,11 @@
   background-color: #ea0a63;
   color: #e0d9dc;
 }
+.IoLogOut{
+  position: relative;
+  top:150px;
+  color: blue !important;
+}
+.IoLogOut:hover{
+  color: whitesmoke!important;
+}

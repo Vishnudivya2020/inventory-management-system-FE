@@ -1,8 +1,6 @@
 import "./App.css";
-
-
 import AppRouter from "./Router.jsx";
-
+import { Provider } from "react-redux";
 
 
 

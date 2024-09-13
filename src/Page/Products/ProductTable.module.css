@@ -83,7 +83,7 @@
       }
      
       
-      .cancleBtn{
+      .cancelBtn{
        
           border:none;
           border-radius: 12px;
@@ -128,5 +128,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-left: 250px;
+     position: relative;
+     bottom:150px;
+     left:200px;
   }

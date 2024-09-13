@@ -1,0 +1,50 @@
+body{
+    margin:0;
+}
+.OContainer{
+    width:1200px;
+     background-color: azure;
+     margin-right:200px;
+ }
+
+ 
+ .title{
+     color:darkblue;
+     font-size: 20px;
+ }
+ .Ocontainers{
+     display:flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center; 
+    gap:10px;
+     background-color: #64aeef; 
+    
+ }
+
+ 
+ 
+ .subContainer-1{
+    
+     background-color: rgb(101, 172, 196);
+     border: 1px solid #ccc;
+     padding: 20px;
+     margin: 10px;
+     width: 200px;
+     text-align: center; 
+     border-radius: 10px;
+     background-color: rgb(244, 91, 116);
+     
+ }
+ .NewOrders{
+    background-Color:#0049B7;
+          color:whitesmoke;
+          border:none;
+          border-radius:8px;
+          padding:10px;
+ }
+ .NewOrders:hover{
+    cursor: pointer;
+    background-color:whitesmoke;
+    color:#0049B7;
+ }

@@ -8,6 +8,7 @@ import CustomerHomePage from "./Page/customer/CustomerHomePage.jsx";
 import ProductPage from "./Page/Products/ProductPage.jsx";
 import UserPage from "./Page/Users/UserPage.jsx";
 import AdminPage from "./Page/Admin/Adminpage.jsx";
+import OrderPage from "./Page/Orders/OrderPage.jsx";
 import VerifyAccount from "./Page/verify-accound/verifyAccount.jsx";
 
 function AppRouter() {
@@ -17,11 +18,12 @@ function AppRouter() {
         <Route path="/" element={<FrontPage />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/customer" element={< CustomerHomePage/>} />
+        <Route path="/Customer" element={< CustomerHomePage/>} />
         <Route path="/Products" element={<ProductPage />} />
         <Route path="/users" element={<UserPage />} />
+        <Route path="/orders" element={<OrderPage />} />
         <Route path="/Admin" element={<AdminPage />} />
-       <Route path="/verify-account" element={<VerifyAccount />} />
+       <Route path="/verify-account" element={<VerifyAccount/>} />
         <Route path="/home" element={<ProtectedRoute  component={<Home/>}/> }  />
       </Routes>
     </BrowserRouter>
