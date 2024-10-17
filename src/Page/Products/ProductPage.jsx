@@ -1,9 +1,7 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { getAllPro, addProductAPI, editProductAPI, deleteProductAPI } from '../../APIs/Product_api';
 import { Link } from 'react-router-dom';
-import {jwtDecode} from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode"; 
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { TiHomeOutline } from "react-icons/ti";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,11 +12,11 @@ const ProductPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [currentProductId, setCurrentProductId] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(''); 
   const [newProduct, setNewProduct] = useState({
-    ProductName: '',
-    bought: '',
-    sold: '',
-    availableInStock: '',
+    productName: '',
+    quantityInStock: '',
+    price: '',
     imageUrl: '/images/products/productA.jpg', // Default image
   });
 
@@ -28,9 +26,13 @@ const ProductPage = () => {
 
   // Fetch all products from the backend
   const loadData = async () => {
-    const data = await getAllPro();
-    setProducts(data);
-    setTotalProducts(data.length);
+    try {
+      const data = await getAllPro();
+      setProducts(data);
+      setTotalProducts(data.length);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
   };
 
   useEffect(() => {
@@ -44,14 +46,16 @@ const ProductPage = () => {
     e.preventDefault();
     try {
       const addedProduct = await addProductAPI(newProduct); // Call API to add product
-      setProducts((prevProducts) => [...prevProducts, addedProduct]); // Update product list with new product
+      console.log(addedProduct);
+      await loadData(); // Reload products after adding new product
       setNewProduct({
-        ProductName: '',
-        bought: '',
-        sold: '',
-        availableInStock: '',
+        productName: '',
+        price: '',
+        quantityInStock: '',
         imageUrl: '/images/products/default.jpg',
       });
+      setSuccessMessage('Product added successfully!'); 
+      setTimeout(() => setSuccessMessage(''), 3000);
       setShowForm(false); // Hide form after adding product
     } catch (error) {
       console.error('Error adding product:', error);
@@ -68,12 +72,13 @@ const ProductPage = () => {
     setEditMode(true);
     setCurrentProductId(product.id); // Save the current product ID for updating
     setNewProduct({
-      ProductName: product.ProductName,
-      bought: product.bought,
-      sold: product.sold,
-      availableInStock: product.availableInStock,
+      productName: product.productName,
+      quantityInStock: product.quantityInStock,
+      price: product.price,
       imageUrl: product.imageUrl,
+      orderId:product.orderId || "",
     });
+  
     setShowForm(true); // Show the form prefilled with the current product details
   };
 
@@ -82,21 +87,20 @@ const ProductPage = () => {
     try {
       const updatedProduct = {
         ...newProduct,
-        orderId: newProduct.orderId || "defaultOrderId", // Ensure orderId has a fallback value
+        orderId: newProduct.orderId || " ", // Ensure orderId has a fallback value
       };
       const updatedResponse = await editProductAPI(currentProductId, updatedProduct);
-      setProducts((prevProducts) =>
-        prevProducts.map((product) =>
-          product.id === currentProductId ? updatedResponse : product
-        )
-      );
+      await loadData(); // Reload products after editing
+      // Success message only after saving changes
+    setSuccessMessage('Product updated successfully!'); 
+    setTimeout(() => setSuccessMessage(''), 3000);
+      
       setShowForm(false);
       setEditMode(false);
       setNewProduct({
-        ProductName: '',
-        bought: '',
-        sold: '',
-        availableInStock: '',
+        productName: '',
+        quantityInStock: '',
+        price: '',
         imageUrl: '/images/products/productA.jpg',
         orderId: '', // Reset orderId
       });
@@ -105,33 +109,34 @@ const ProductPage = () => {
     }
   };
 
-  // Function to handle deleting a product
   const handleDeleteProduct = async (productId) => {
     try {
+      // Call the API to delete the product
       await deleteProductAPI(productId);
-      setProducts((prevProducts) =>
-        prevProducts.filter((product) => product.id !== productId)
-      );
-      setTotalProducts((prevTotal) => prevTotal - 1);
+  
+      // Update the frontend state to remove the product
+      await loadData(); // Reload products after deletion
+      console.log('Product deleted successfully');
+      setSuccessMessage('Product Deleted successfully!'); 
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Error deleting product:', error);
     }
   };
+  
 
   const renderCheck = () => {
     if (isAuthorized) {
       return (
         <>
-         
+             <h1>Welcome To Product Page</h1>
+      {/* Display success message if present */}
+      {successMessage && <div style={{color:"green",backgroundColor:"#eaffea",
+        padding:"10px",border:"1px solid green",borderRadius:"5px",marginBottom:"10px"
+      }}>{successMessage}</div>}
           <div className="d-flex justify-content-between align-items-center my-4">
             <button
-               style={{ color: 'whitesmoke',
-                 backgroundColor:'green', 
-                padding: '10px' ,
-              display:'flex',
-              marginLeft:'0px',
-              marginTop:'50px'
-              }}
+              style={{ color: 'whitesmoke', backgroundColor: 'green', padding: '10px', display: 'flex', marginLeft: '0px', marginTop: '50px' }}
               onClick={() => {
                 setShowForm((prev) => !prev);
                 if (editMode) {
@@ -142,20 +147,19 @@ const ProductPage = () => {
             >
               {showForm ? 'Cancel' : 'Add New Product'}
             </button>
-            <h5 style={{color:'whitesmoke',backgroundColor:'#FF1D5B',padding:'20px'}}>Total Products: {totalProducts}</h5>
+            <h5 style={{ color: 'whitesmoke', backgroundColor: '#FF1D5B', padding: '20px' }}>Total Products: {totalProducts}</h5>
           </div>
 
           {showForm && (
             <div className="container mt-4">
               <h2>{editMode ? 'Edit Product' : 'Add New Product'}</h2>
               <form onSubmit={editMode ? handleSaveChanges : handleAddProduct}>
-                <div className="form-group" >
+                <div className="form-group">
                   <label>Product Name</label>
                   <input
-                  
                     type="text"
-                    name="ProductName"
-                    value={newProduct.ProductName}
+                    name="productName"
+                    value={newProduct.productName}
                     onChange={handleInputChange}
                     className="form-control"
                     placeholder="Product Name"
@@ -163,38 +167,26 @@ const ProductPage = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Bought</label>
+                  <label>Quantity In Stock</label>
                   <input
                     type="text"
-                    name="bought"
-                    value={newProduct.bought}
+                    name="quantityInStock"
+                    value={newProduct.quantityInStock}
                     onChange={handleInputChange}
                     className="form-control"
-                    placeholder="Bought"
+                    placeholder="QuantityInStock"
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Sold</label>
+                  <label>Price</label>
                   <input
                     type="text"
-                    name="sold"
-                    value={newProduct.sold}
+                    name="price"
+                    value={newProduct.price}
                     onChange={handleInputChange}
                     className="form-control"
-                    placeholder="Sold"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Available In Stock</label>
-                  <input
-                    type="text"
-                    name="availableInStock"
-                    value={newProduct.availableInStock}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    placeholder="Available In Stock"
+                    placeholder="price"
                     required
                   />
                 </div>
@@ -219,15 +211,14 @@ const ProductPage = () => {
           <div className="container mt-4">
             <table className="table table-striped table-bordered">
               <thead>
-                <tr >
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>ID</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Order ID</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Product Name</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Bought</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Sold</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Available In Stock</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Image</th>
-                  <th style={{color:'whitesmoke',backgroundColor:'black'}}>Actions</th>
+                <tr>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>ID</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Order ID</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Product Name</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Quantity In Stock</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Price</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Image</th>
+                  <th style={{ color: 'whitesmoke', backgroundColor: 'black' }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -235,14 +226,13 @@ const ProductPage = () => {
                   <tr key={index}>
                     <td>{product.id}</td>
                     <td>{product.orderId}</td>
-                    <td>{product.ProductName}</td>
-                    <td>{product.bought}</td>
-                    <td>{product.sold}</td>
-                    <td>{product.availableInStock}</td>
+                    <td>{product.productName}</td>
+                    <td>{product.quantityInStock}</td>
+                    <td>{product.price}</td>
                     <td>
                       <img
                         src={product.imageUrl}
-                        alt={product.ProductName}
+                        alt={product.productName}
                         style={{ width: '50px' }}
                       />
                     </td>
@@ -262,21 +252,30 @@ const ProductPage = () => {
             </table>
           </div>
         </>
-      )
+      );
     } else {
-      return <h1>You are not authorized 🤷‍♀️</h1>
+      return <h1>You are not authorized 🤷‍♀️</h1>;
     }
   };
 
   return (
-    
-    <div className="container">
-      <Link to='/home'  style={{fontSize:'40px'}}><TiHomeOutline /></Link>
-      {renderCheck()}
-     
+    <div style={{ backgroundColor: '#FF1D5B', color: 'white', minHeight: '100vh' }}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            <TiHomeOutline /> Home
+          </Link>
+        </div>
+      </nav>
+      <div className="container mt-4">
+        {renderCheck()}
+      </div>
     </div>
   );
 };
 
 export default ProductPage;
+
+
+
 

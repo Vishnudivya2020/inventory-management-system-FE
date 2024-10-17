@@ -9,7 +9,7 @@ const UserTable = ({users = [],onDelete}) => {
   const handleDeleteClick = (UserId) => {
     const user = users.find((u) => u.id === UserId);
     const isConfirmed = window.confirm(
-      `Are you sure you want to delete the  "${user?.ProductName}"?`
+      `Are you sure you want to delete the  "${user?.name}"?`
     );
     if (isConfirmed) {
       onDelete(UserId);

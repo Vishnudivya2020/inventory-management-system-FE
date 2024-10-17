@@ -1,36 +1,3 @@
-//API to register a new user into the database
-
-// import {BE_Url} from './Constants.js';
-
-// const userSignup = async (userData) => {
-//   try {
-//     const response = await fetch(`${BE_Url}/register`, {
-//       method: "POST",
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(userData),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status:${response.status}`);
-//     }
-
-//     const data = await response.json();
-//     // Assuming the response contains a profilePicUrl, save it to local storage
-//     const userProfile = {
-//       ...data,
-//       profilePicUrl: data.profilePicUrl || 'default profile', // Default value if not provided
-//     };
-
-//     localStorage.setItem('userProfile', JSON.stringify(userProfile));
-
-//     return data;
-//   } catch (error) {
-//     console.log('Error during registration:', error);
-//   }
-// };
-
 import { BE_Url } from './Constants.js';
 
 const userSignup = async (userData) => {

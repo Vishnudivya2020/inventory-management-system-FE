@@ -26,9 +26,8 @@ const ProductTable = ({ Products = [], onView }) => {
         <thead>
           <tr>
             <th>Product Name</th>
-            <th>Bought</th>
-            <th>Sold</th>
-            <th>Available In Stock</th>
+            <th>Quantity In Stock</th>
+            <th>Price</th>
             <th>ID</th>
             <th>OrderId</th>
             <th>Action</th>
@@ -39,10 +38,9 @@ const ProductTable = ({ Products = [], onView }) => {
         <tbody>
           {Products.map((product) => (
             <tr key={product.id}>
-              <td>{product.ProductName}</td>
-              <td>{product.bought}</td>
-              <td>{product.sold}</td>
-              <td>{product.availableInStock}</td>
+              <td>{product. productName}</td>
+             <td>{product.quantityInStock}</td>
+             <td>{product.price}</td>
               <td>{product.id}</td>
               <td>{product.orderId}</td>
               <td className={styles.iconBtn}>
@@ -59,17 +57,16 @@ const ProductTable = ({ Products = [], onView }) => {
       {/* View Product Modal */}
       {isViewModelOpen && selectedProduct && (
         <div className={styles.modalOverlay}>
-          <h3>View Product</h3>
+          <h3 className={styles.para}>View Product</h3>
           <img
             src={selectedProduct.imageUrl || '/images/products/default.jpg'}
             className={styles.productImage}
-            alt={selectedProduct.ProductName}
+            alt={selectedProduct.productName}
           />
           <div className={styles.productInfo}>
-            <p><strong>Product Name:</strong> {selectedProduct.ProductName}</p>
-            <p><strong>Bought:</strong> {selectedProduct.bought}</p>
-            <p><strong>Sold:</strong> {selectedProduct.sold}</p>
-            <p><strong>Available In Stock:</strong> {selectedProduct.availableInStock}</p>
+            <p><strong>Product Name:</strong> {selectedProduct.productName}</p>
+           
+            <p><strong>Quantity In Stock:</strong> {selectedProduct.quantityInStock}</p>
             <p><strong>OrderID:</strong> {selectedProduct.orderId}</p>
             <p><strong>ID:</strong> {selectedProduct.id}</p>
             <div className={styles.EditBtns}>

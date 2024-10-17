@@ -10,13 +10,9 @@ function App() {
   return (
    <>
     <div className="container">
-    
     <AppRouter/>
-   
-    </div>
-    
-    
-    </>
+       </div>
+   </>
   )
 }
 

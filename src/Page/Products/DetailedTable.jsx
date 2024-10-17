@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-// import styles from './DetailedTable.module.css';
+
 
 const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -135,3 +135,4 @@ const DetailedTable = ({ Products = [], onEdit, onDelete }) => {
 };
 
 export default DetailedTable;
+

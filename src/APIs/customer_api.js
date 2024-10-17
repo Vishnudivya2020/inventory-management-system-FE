@@ -1,5 +1,6 @@
  const backendUrl = `${import.meta.env.VITE_BACKEND_URL}/Customer`; 
 
+ // API for Get allCustomer.
 const getAllCus = async () => {
     const response = await fetch (backendUrl,{
         headers:{
@@ -9,27 +10,7 @@ const getAllCus = async () => {
     return await  response.json();
 };
 
-
-
-
-// const addCustomer = async (newCustomer) => {
- 
-
-//   const response = await fetch(backendUrl, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: localStorage.getItem('token'),
-//     },
-//     body: JSON.stringify(newCustomer),
-//   });
-
-//   if (response.ok) {
-//     return await response.json();
-//   } else {
-//     throw new Error('Failed to add customer');
-//   }
-// };
+// API for add new Customer
 const addCustomer = async (newCustomer) => {
   console.log('Adding customer:', newCustomer); // Debugging line
 
@@ -51,7 +32,7 @@ const addCustomer = async (newCustomer) => {
   }
 };
 
-
+// API for DELETE Customer
 const deleteCustomer = async (customerId) => {
   try {
     const response = await fetch(`${backendUrl}/${customerId}`, {

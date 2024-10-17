@@ -51,10 +51,10 @@ h2 {
 
 .loginlabel {
   display: flex;
-  font-weight: bolder;
+  font-weight:bolder;
  color:blue;
-  gap: 5px;
-  padding: 8px;
+  gap: 10px;
+  padding: 10px;
 
 }
 

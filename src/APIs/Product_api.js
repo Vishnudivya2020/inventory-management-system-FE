@@ -1,9 +1,7 @@
-
-
-
 const backendUrl = `${import.meta.env.VITE_BACKEND_URL}/Products`;
 
-// Get all products
+
+//API for Get all products
 const getAllPro = async () => {
     const response = await fetch(backendUrl, {
         headers: {
@@ -13,7 +11,7 @@ const getAllPro = async () => {
     return await response.json();
 };
 
-// Add product
+//API for Add New product
 const addProductAPI = async (newProduct) => {
     const response = await fetch(backendUrl, {
         method: 'POST',
@@ -32,7 +30,7 @@ const addProductAPI = async (newProduct) => {
 
 
 
-// Edit product
+//API for Edit product
 const editProductAPI = async (productId, updatedProduct) => {
   try {
     const response = await fetch(`${backendUrl}/${productId}`, {  // Corrected the URL usage
@@ -57,41 +55,47 @@ const editProductAPI = async (productId, updatedProduct) => {
   }
 };
 
-// Delete product
+
+
+// API for delete a product
 const deleteProductAPI = async (productId) => {
+  try {
     const response = await fetch(`${backendUrl}/${productId}`, {
-        method: 'DELETE',
-        headers: {
-            Authorization: localStorage.getItem("token"),
-        },
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem("token"), // Add authorization header if required
+      },
     });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Server response:', errorData);
+      throw new Error('Failed to delete product');
+    }
+
     return await response.json();
+  } catch (error) {
+    console.error('Error in deleteProductAPI:', error);
+    throw error;
+  }
 };
 
-// /src/APIs/Product_api.js
+// get quantity in product data for InventoryCharat
+export const updateProductQuantity = async (productId,newQuantity) => {
+  try{
+    const response = await fetch(`${backendUrl}/${productId}/quantity`,{quantityInStock:newQuantity});
+      return response.data;
 
-// Function to update a product's order ID
-// export const updateProductOrderIdAPI = async (productId, orderId) => {
-//   try {
-//     const response = await fetch(`/ backendUrl/  ${productId}`, {
-//       method: 'PATCH',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ orderId }),
-//     });
+  } catch(error){
+    throw new Error('Failed to update Product quantity');
+  }
+};
 
-//     if (!response.ok) {
-//       throw new Error('Failed to update product order ID');
-//     }
 
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error('Error updating product order ID:', error);
-//     throw error;
-//   }
-// };
+
+
+
+
 
 
 export { getAllPro, addProductAPI, editProductAPI, deleteProductAPI };

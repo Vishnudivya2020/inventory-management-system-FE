@@ -10,6 +10,7 @@
     text-align: center;
     position:relative;
     gap:20px;
+    
   
   }
 
@@ -28,6 +29,9 @@
   }
   
   .btn:last-child {
-    left: 890px; /* Adjust this value to increase/decrease the space between the buttons */
+    left: 890px; 
   }
- 
+
+
+    
+     

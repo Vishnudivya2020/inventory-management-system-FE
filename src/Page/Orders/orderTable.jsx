@@ -18,7 +18,7 @@ const OrderTable = ({orders , onEdit, onDelete }) => {
             <th>TotalPrice</th>
             <th>CustomerName</th>
             <th>OrderDate</th>
-            <th>Status</th>
+            {/* <th>Status</th> */}
             <th>ProductsId</th>
             <th>Action</th>
           </tr>
@@ -33,7 +33,7 @@ const OrderTable = ({orders , onEdit, onDelete }) => {
              <td>{order.totalPrice}</td>
              <td>{order.customerName}</td>
              <td>{order.orderDate}</td>
-             <td>{order.status }</td>
+             {/* <td>{order.status }</td> */}
              <td>{order.Products}</td>
              <td style={{ display:'flex'}}  >
              <button  style={{ color:'blue'}} className={styles.EBTN} onClick={() => onEdit(order)}><MdOutlineModeEdit /></button>

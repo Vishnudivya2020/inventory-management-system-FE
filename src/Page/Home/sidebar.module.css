@@ -45,7 +45,7 @@
   right: 25px;
   font-size: 40px !important;
   margin-left: 50px;
-  color:black !important;
+  color:green!important;
   cursor: pointer;
 }
 
@@ -55,14 +55,12 @@
 }
 
 .openbtn {
-  font-size: 25px;
+  font-size: 40px;
   cursor: pointer;
-  font-family: 'Times New Roman', Times, serif;
-  background-color:rgb(143, 230, 13);
-  color: rgb(26, 8, 112);
-  padding: 10px 15px;
+  color: black;
+  padding: 5px ;
   border: none;
-  border-radius: 10px;
+  background-color: #A28089;
 }
 
 .openbtn:hover {

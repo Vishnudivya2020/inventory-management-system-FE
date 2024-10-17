@@ -1,44 +1,77 @@
 
-
 import React, { useState, useEffect } from 'react';
- import styles from './OrderPage.module.css';
-import { getAllOrders, addOrder, updateOrder, deleteOrder } from '../../APIs/Order_api.js';
+import styles from './OrderPage.module.css';
+import { getAllOrders, updateOrder, deleteOrder, createAndAssignOrder } from '../../APIs/Order_api';
 import { Link } from 'react-router-dom';
 import OrderTable from './orderTable.jsx';
 import { TiHomeOutline } from "react-icons/ti";
-import OrderForm from './OrderForm.jsx'; // Create a new component for adding and editing orders
+import OrderForm from './OrderForm.jsx';
 
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
   const [totalOrders, setTotalOrders] = useState(0);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [loading, setLoading] = useState(true); // Track loading state
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
+  const [error, setError] = useState(null); // Track error state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   const loadData = async () => {
-    const data = await getAllOrders();
-    setOrders(data);
-    setTotalOrders(data.length);
+    try {
+      setLoading(true);
+      const data = await getAllOrders();
+      console.log("Fetched Orders:", data);  // Add this line
+      setOrders(data);
+      setTotalOrders(data.length);
+    } catch (error) {
+      setError('Failed to load orders');
+    } finally {
+      setLoading(false);
+    }
   };
-
+  
   useEffect(() => {
     loadData();
   }, []);
 
   const handleAddOrder = async (order) => {
     try {
-      await addOrder(order);
-      loadData();
-      setShowForm(false);
+      const newOrder = await createAndAssignOrder(order); 
+      
+      // If the API doesn't return 'id', map the ProductId to id or other necessary transformations
+      const mappedOrder = {
+        id: newOrder.ProductId,
+        productName: newOrder.productName,
+        quantity: newOrder.quantity,
+        pricePerUnit: newOrder.pricePerUnit,
+        totalPrice: newOrder.totalPrice,
+        customerName: newOrder.customerName,
+        // Add other necessary fields here
+      };
+  
+      setOrders((prevOrders) => [...prevOrders, mappedOrder]); // Append the new order to the state
+      setTotalOrders((prevTotal) => prevTotal + 1);
+      setSuccessMessage('Order added successfully!');
+      setTimeout(() => setSuccessMessage(''), 3000);
+      setShowForm(false); // Close the form
     } catch (error) {
       console.error('Error adding order:', error);
     }
   };
-
+  
+  
   const handleEditOrder = async (order) => {
     try {
+      console.log("Editing order:", order);
       await updateOrder(order.id, order);
-      loadData();
-      setShowForm(false);
+      setOrders((prevOrders) =>
+        prevOrders.map((o) => (o.id === order.id ? order : o))
+      );
+      setSuccessMessage('Order updated successfully!'); 
+      setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
+      setShowForm(false); // Close form after saving
     } catch (error) {
       console.error('Error editing order:', error);
     }
@@ -47,7 +80,12 @@ const OrderPage = () => {
   const handleDeleteOrder = async (orderId) => {
     try {
       await deleteOrder(orderId);
-      loadData();
+      await loadData();
+      setOrders((prevOrders) =>
+        prevOrders.filter((order) => order.id !== orderId)
+      );
+      setSuccessMessage('Order deleted successfully!'); 
+      setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
     } catch (error) {
       console.error('Error deleting order:', error);
     }
@@ -58,114 +96,54 @@ const OrderPage = () => {
     setShowForm(true);
   };
 
+  const handleCloseForm = () => {
+    setSelectedOrder(null);
+    setShowForm(false);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className={styles.orderContainer}>
-      <Link to="/home"  style={{fontSize:'40px'}}><TiHomeOutline /></Link>
+      <Link to="/home" style={{ fontSize: '40px' }}>
+        <TiHomeOutline />
+      </Link>
       <h1>Welcome To Order Page</h1>
+      
+      {/* Display success message if present */}
+      {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
+      
       <div className={styles.Ocontainers}>
         <div className={styles['subContainer-1']}>
           <h2 className={styles.title}>Number of Orders</h2>
-          {totalOrders}
+          <span>{totalOrders}</span>
         </div>
-        <button className={styles.NewOrders} onClick={() => handleShowForm()}>Add New Order</button>
+        <button className={styles.NewOrders} onClick={() => handleShowForm()} disabled={isSubmitting}>
+          Add New Order
+        </button>
       </div>
+
       {showForm && (
         <OrderForm
           order={selectedOrder}
           onSave={selectedOrder ? handleEditOrder : handleAddOrder}
-          onCancel={() => setShowForm(false)}
+          onCancel={handleCloseForm}
         />
       )}
+
       <OrderTable
         orders={orders}
         onEdit={handleShowForm}
         onDelete={handleDeleteOrder}
       />
-     
     </div>
   );
 };
 
 export default OrderPage;
-
-
-// import React, { useState } from 'react';
-// import { getAllOrders, addOrder, updateOrder, deleteOrder } from '../../APIs/Order_api.js';
-// import { updateProductOrderIdAPI } from '../../APIs/Product_api'; // API to update product with orderId
-
-// const OrderPage = ({ productId }) => {
-//   const [order, setOrder] = useState({
-//     orderId: '',
-//     orderDetails: '', // Example: Add other fields as necessary for the order
-//   });
-//   const [isEditMode, setIsEditMode] = useState(false);
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setOrder({ ...order, [name]: value });
-//   };
-
-//   // Function to handle order creation
-//   const handleCreateOrder = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const newOrder = await addOrder(order); // Create a new order
-//       // Update the product with the new orderId
-//       await updateProductOrderIdAPI(productId, newOrder.orderId);
-//       alert('Order created successfully, product updated!');
-//       setOrder({ orderId: '', orderDetails: '' });
-//     } catch (error) {
-//       console.error('Error creating order:', error);
-//     }
-//   };
-
-//   // Function to handle order update
-//   const handleUpdateOrder = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const updatedOrder = await (order.orderId, order); // Update existing order
-//       // Update the product with the updated orderId
-//       await updateProductOrderIdAPI(productId, updatedOrder.orderId);
-//       alert('Order updated successfully, product updated!');
-//     } catch (error) {
-//       console.error('Error updating order:', error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>{isEditMode ? 'Edit Order' : 'Create New Order'}</h2>
-//       <form onSubmit={isEditMode ? handleUpdateOrder : handleCreateOrder}>
-//         <div className="form-group">
-//           <label>Order ID</label>
-//           <input
-//             type="text"
-//             name="orderId"
-//             value={order.orderId}
-//             onChange={handleInputChange}
-//             className="form-control"
-//             placeholder="Order ID"
-//             required
-//           />
-//         </div>
-//         <div className="form-group">
-//           <label>Order Details</label>
-//           <input
-//             type="text"
-//             name="orderDetails"
-//             value={order.orderDetails}
-//             onChange={handleInputChange}
-//             className="form-control"
-//             placeholder="Order Details"
-//             required
-//           />
-//         </div>
-//         <button type="submit" className="btn btn-primary">
-//           {isEditMode ? 'Update Order' : 'Create Order'}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default OrderPage;
