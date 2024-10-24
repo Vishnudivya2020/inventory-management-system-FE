@@ -262,7 +262,7 @@ const ProductPage = () => {
     <div style={{ backgroundColor: '#FF1D5B', color: 'white', minHeight: '100vh' }}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/home">
             <TiHomeOutline /> Home
           </Link>
         </div>
